@@ -5,9 +5,6 @@ const app = express();
 // i.e /my-cv will server /my-cv.html
 app.use(express.static("public", {'extensions': ['html']}));
 
-app.get('/contact', (req, res) => {
-  res.send('this is my contact page');
-});
 
 // what does this line mean: process.env.PORT || 3000
 app.listen(process.env.PORT || 3000, function () {
