@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-preview">
+        {{!-- <div class="post-preview">
             <a href="post.html">
                 <h2 class="post-title">
                     Man must explore, and this is exploration at its greatest
@@ -31,9 +31,24 @@
                 </h3>
             </a>
             <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
-        </div>
-        <hr>
+        </div> --}}
+        {{#each posts}}
         <div class="post-preview">
+            <a href="post.html">
+                <h2 class="post-title">
+                    {{this.title}}
+                </h2>
+                <h3 class="post-subtitle">
+                    {{this.summary}}
+                </h3>
+                <p class="post-content">
+                    {{ this.content}}
+                </p>
+            </a>
+        </div>
+        {{/each}}
+        <hr>
+{{!--         <div class="post-preview">
             <a href="post.html">
                 <h2 class="post-title">
                     Failure is not an option
@@ -43,7 +58,7 @@
                 </h3>
             </a>
             <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 8, 2014</p>
-        </div>
+        </div> --}}
         <hr>
         <!-- Pager -->
         <ul class="pager">
