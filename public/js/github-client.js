@@ -3,7 +3,7 @@ function loadRepos(userName) {
         const reposInfo = JSON.parse(this.responseText);
 
         let html = '<div class="row">';
-        reposInfo.forEach(function(repo) {
+        reposInfo.forEach(repo => {
             const description = repo.description ? repo.description.substring(0, 50) : "No Description";
 
             html += `<div class="col-sm-6 col-md-4">
@@ -35,6 +35,6 @@ function loadRepos(userName) {
 }
 
 var myButton = document.querySelector('#btnGetRepos');
-myButton.addEventListener('click', function() {
+myButton.addEventListener('click', () => {
     loadRepos('CodeYourFuture');
 });

@@ -10,11 +10,16 @@ app.use(express.static("public", {'extensions': ['html']}));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//      VARIABLES
+  
+  const filePath = __dirname + "/data/posts.json";
+
+
+
 //			ROUTES
 
 app.get("/", (req, res) => {
 	// res.render("index", { name: "Eugene Sydorov" } )
-	const filePath = __dirname + "/data/posts.json";
   const callbackFunction = (error, file) => {
     // we call .toString() to turn the file buffer to a String
     const fileData = file.toString();
@@ -34,6 +39,8 @@ app.get("/my-cv", (req, res) => { res.render("my-cv") });
 app.get("/admin", (req, res) => { res.render("admin") });
 
 app.get("/contact", (req, res) => res.render("contact"));
+
+app.get("/posts", (req, res) => res.sendFile(filePath));
 
 // what does this line mean: process.env.PORT || 3000
 app.listen(process.env.PORT || 3000, function () {
