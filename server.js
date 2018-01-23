@@ -12,7 +12,7 @@ app.set("view engine", "handlebars");
 
 //      VARIABLES
   
-  const filePath = __dirname + "/data/posts.json";
+const filePath = __dirname + "/data/posts.json";
 
 
 
@@ -41,6 +41,21 @@ app.get("/admin", (req, res) => { res.render("admin") });
 app.get("/contact", (req, res) => res.render("contact"));
 
 app.get("/posts", (req, res) => res.sendFile(filePath));
+
+app.get("/posts/:postId", (req, res) => {
+  let postId = req.params.postId;
+  fs.readFile(filePath, (error, file) => {
+    const parsedFile = JSON.parse(file);
+    // console.log(parsedFile);
+    parsedFile.forEach(post => {
+      if(post.id === postId){
+        res.send(post);
+      }
+    });
+    // res.render("post", { post: parsedFile[postId] });
+  });
+});
+
 
 // what does this line mean: process.env.PORT || 3000
 app.listen(process.env.PORT || 3000, () => {

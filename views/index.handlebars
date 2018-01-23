@@ -34,7 +34,10 @@
         </div> --}}
         {{#each posts}}
         <div class="post-preview">
-            <a href="post.html">
+            <a href="/posts/{{this.id}}">
+                <h4 class="post-id">
+                    <span>Post id: </span>{{this.id}}
+                </h2>
                 <h2 class="post-title">
                     {{this.title}}
                 </h2>
