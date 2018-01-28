@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.get("/my-cv", (req, res) => { res.render("my-cv") });
+app.get("/my-cv", (req, res) => { res.render("my-cv", { title: "Eugene" }) });
 
 
 app.get("/admin", (req, res) => { res.render("admin") });
