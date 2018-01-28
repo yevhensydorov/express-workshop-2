@@ -2,9 +2,9 @@ const express = require("express"),
 			app = express(),
 			exphbs = require("express-handlebars"),
       bodyParser = require("body-parser"),
-			fs = require("fs");
-      // savePost = require("/helpers/savePost"),
-      // readPost = require("helpers/readPosts");
+			fs = require("fs"),
+      fetch = require('node-fetch');
+
 
 // The extensions 'html' allows us to serve file without adding .html at the end 
 // i.e /my-cv will server /my-cv.html
@@ -48,6 +48,19 @@ app.get("/contact", (req, res) => res.render("contact"));
 
 
 app.get("/posts", (req, res) => res.sendFile(filePath));
+
+app.get("/ol-posts", (req, res) => {
+  const olenaJson = "https://radiant-tor-44272.herokuapp.com/posts";
+
+  fetch(olenaJson)
+    .then(function(res) {
+        return res.json();
+    }).then(function(body) {
+        res.send(body)
+    }).catch(function(err) {
+        console.log(err);
+    });
+});
 
 
 app.post("/posts", (req, res) => {
